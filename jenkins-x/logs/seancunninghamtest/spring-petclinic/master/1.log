@@ -1,0 +1,48 @@
+
+Showing logs for build [32mmeta-seancunninghamtest-spring-qw2kr-1[0m stage [32mmeta-pipeline[0m and container [32mcredential-initializer[0m
+{"level":"info","ts":1600877355.64677,"caller":"creds-init/main.go:44","msg":"Credentials initialized."}
+
+Showing logs for build [32mmeta-seancunninghamtest-spring-qw2kr-1[0m stage [32mmeta-pipeline[0m and container [32mworking-dir-initializer[0m
+
+Showing logs for build [32mmeta-seancunninghamtest-spring-qw2kr-1[0m stage [32mmeta-pipeline[0m and container [32mplace-tools[0m
+
+Showing logs for build [32mmeta-seancunninghamtest-spring-qw2kr-1[0m stage [32mmeta-pipeline[0m and container [32mstep-git-source-meta-seancunninghamtest-spring-qw2kr-fxjlc[0m
+{"level":"info","ts":1600877512.7667081,"caller":"git/git.go:105","msg":"Successfully cloned https://github.com/**************test/spring-petclinic.git @ master in path /workspace/source"}
+{"level":"warn","ts":1600877512.7668412,"caller":"git/git.go:152","msg":"Unexpected error: creating symlink: symlink /tekton/home/.ssh /root/.ssh: file exists"}
+{"level":"info","ts":1600877512.8249087,"caller":"git/git.go:133","msg":"Successfully initialized and updated submodules in path /workspace/source"}
+
+Showing logs for build [32mmeta-seancunninghamtest-spring-qw2kr-1[0m stage [32mmeta-pipeline[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32mmeta-seancunninghamtest-spring-qw2kr-1[0m stage [32mmeta-pipeline[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mmeta-seancunninghamtest-spring-qw2kr-1[0m stage [32mmeta-pipeline[0m and container [32mstep-merge-pull-refs[0m
+SKIP merge-pull-refs: Nothing to merge
+
+Showing logs for build [32mmeta-seancunninghamtest-spring-qw2kr-1[0m stage [32mmeta-pipeline[0m and container [32mstep-create-effective-pipeline[0m
+Effective pipeline written to *********-effective.yml
+
+Showing logs for build [32mmeta-seancunninghamtest-spring-qw2kr-1[0m stage [32mmeta-pipeline[0m and container [32mstep-create-tekton-crds[0m
+running command: echo \$(**-release-version) > VERSION
+
+running command: mvn versions:set -DnewVersion=\$(cat VERSION)
+[INFO] Scanning for projects...
+[INFO] Downloading from nexus: http://nexus/repository/maven-group/org/springframework/boot/spring-boot-starter-parent/2.2.5.RELEASE/spring-boot-starter-parent-2.2.5.RELEASE.pom
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[FATAL] Non-resolvable parent POM for org.springframework.samples:spring-petclinic:2.2.0.BUILD-SNAPSHOT: Could not transfer artifact org.springframework.boot:spring-boot-starter-parent:pom:2.2.5.RELEASE from/to nexus (http://nexus/repository/maven-group/): Transfer failed for http://nexus/repository/maven-group/org/springframework/boot/spring-boot-starter-parent/2.2.5.RELEASE/spring-boot-starter-parent-2.2.5.RELEASE.pom and 'parent.relativePath' points at wrong local POM @ line 10, column 11
+ @ 
+[ERROR] The build could not read 1 project -> [Help 1]
+[ERROR]   
+[ERROR]   The project org.springframework.samples:spring-petclinic:2.2.0.BUILD-SNAPSHOT (/workspace/source/pom.xml) has 1 error
+[ERROR]     Non-resolvable parent POM for org.springframework.samples:spring-petclinic:2.2.0.BUILD-SNAPSHOT: Could not transfer artifact org.springframework.boot:spring-boot-starter-parent:pom:2.2.5.RELEASE from/to nexus (http://nexus/repository/maven-group/): Transfer failed for http://nexus/repository/maven-group/org/springframework/boot/spring-boot-starter-parent/2.2.5.RELEASE/spring-boot-starter-parent-2.2.5.RELEASE.pom and 'parent.relativePath' points at wrong local POM @ line 10, column 11: Connect to nexus:80 [nexus/172.30.83.104] failed: Connection refused (Connection refused) -> [Help 2]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException
+error: failed to set the version on release pipelines: failed to run '/bin/sh -c mvn versions:set -DnewVersion=$(cat VERSION)' command in directory '/workspace/source', output: ''
+[31m
+Pipeline failed on stage 'meta-pipeline' : container 'step-create-tekton-crds'. The execution of the pipeline has stopped.[0m
